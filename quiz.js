@@ -1,5 +1,6 @@
 const quizDiv = document.querySelector("#quizDiv");
-const scoreDiv = document.querySelector("#scoreDiv h2");
+const scoreDiv = document.querySelector("#scoreDiv");
+const scoreDivH2 = document.querySelector("#scoreDiv h2");
 const timer = document.querySelector(".timer");
 const question = document.querySelector(".question");
 const options = document.querySelectorAll(".option");
@@ -44,7 +45,6 @@ displayTimer();
 id1 = setInterval(changeQuestion, 5000);
 
 function changeQuestion() {
-
   if (questionNumber === data.length - 1) {
     clearInterval(id1); // To stop question cycle
   }
@@ -68,7 +68,6 @@ function displayTimer() {
       timer.innerHTML = counter--;
       if (questionNumber === data.length) {
         clearInterval(id2); // To stop timer cycle
-
         quizDiv.style.display = "none";
         scoreDiv.style.display = "block";
 
@@ -95,7 +94,7 @@ function displayScore() {
   for (let i = 0; i < userAnswers.length; i++) {
     if (Number(userAnswers[i]) === data[i].answer) score++;
   }
-  scoreDiv.innerHTML = "You have scored " + score + " out of " + data.length;
+  scoreDivH2.innerHTML = "You have scored " + score + " out of " + data.length;
 }
 
 //HOISTING: to take var declarations & function definitions up top
